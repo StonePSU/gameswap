@@ -1,0 +1,27 @@
+{
+  "name": "gameswap",
+  "version": "1.0.0",
+  "description": "FreeCodeCamp project to create a video game trading website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StonePSU/gameswap.git"
+  },
+  "author": "Matt Krell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StonePSU/gameswap/issues"
+  },
+  "homepage": "https://github.com/StonePSU/gameswap#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.10.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}
