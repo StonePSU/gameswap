@@ -1,0 +1,50 @@
+doctype html
+html
+    include head.pug
+    body
+        include nav.pug
+        div.container
+            article
+                header 
+                    h1 Manage User Information
+                    p Here you can change your password or update your location.  
+                    br
+                    div(style='display:none')
+                        a.btn.btn-success(href='#confirmation' class='inline' id='confirmation') Get Started
+                        div#confirmation
+                section
+                    div(style='display:none')
+                        a(href='#modal_signup' class='inline' id='pop-message') Change Password
+                        div#modal_signup
+                            p Your changes have been saved.
+                    h3.text-success Update Your Password
+                    br
+                    form#passwordForm
+                        div.form-group
+                            label(for='password') New Password
+                            input.form-control(type='password' placeholder='Enter new password' name='password' data-validation='required' data-validation-error-msg='Please enter a new password.' id='password')
+                        div.form-group
+                            label(for='confirm-password') Confirm Password
+                            input.form-control(type='password' placeholder='Please re-enter your new password' name='confirm-password' id="confirm-password" data-validation='confirmation' data-validation-confirm='password' data-validation-error-msg='Confirm Password does not match Password.')
+                        button.btn.btn-success(type='submit' id='pass') Save Password
+                    br
+                    h3.text-success Manage Your Name &amp; Location
+                    p Setting your location is helpful when trading games so other community members know where you are.
+                    form#locationForm
+                        div.form-group
+                            label(for='firstName') First Name
+                            input.form-control(type='text' placeholder='Enter your first name' name='firstName' id='firstName' value=firstName)
+                        div.form-group
+                            label(for='lastName') Last Name
+                            input.form-control(type='text' placeholder='Enter your last name' name='lastName' id='lastName' value=lastName)
+                        div.form-group
+                            label(for='city') City
+                            input.form-control(type='text' placeholder='Enter your city' name='city' id='city' value=city)
+                        div.form-group
+                            label(for='state') State
+                            input.form-control(type='text' placeholder='Enter your state' id='state' name='state' value=state)
+                        button.btn.btn-success(type='button' id='location') Save Changes
+    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js')                    
+    script(type='text/javascript' src='/public/js/user.js')
+    script(type='text/javascript' src='/public/js/modaal.min.js')
+                        

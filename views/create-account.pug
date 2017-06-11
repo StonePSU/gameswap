@@ -1,0 +1,24 @@
+doctype html
+html    
+    include head.pug
+    body
+        div.container
+            article 
+                header
+                    h1 Register
+                section
+                    form(action='/api/user' method='POST' id='createAccount')
+                        p Before you can start trading, you need to create an account.  Doesn't get much simpler than this!
+                        div.form-group
+                            label(for='username') *Email Address
+                            | &nbsp;(This will be your user name)
+                            input.form-control(data-validation='email' data-validation-error-msg='Please enter a valid email address' placeholder='enter your email address' name='username')
+                        div.form-group
+                            label(for='password') *Password
+                            input.form-control(type='password' name='password' data-validation='required' data-validation-error-msg='Please enter a password for your account.')
+                        div.form-group
+                            label(for='confirm-password') *Confirm Password
+                            input.form-control(type='password' name='confirm-password' data-validation='confirmation' data-validation-confirm='password' data-validation-error-msg='Confirm Password does not match Password.')
+                        button.btn.btn-success(type='submit') Create
+    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js')
+    script(type='text/javascript' src='/public/js/accountValidation.js')

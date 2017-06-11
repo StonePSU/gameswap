@@ -1,0 +1,22 @@
+doctype html
+html
+    include head.pug
+    body
+        include nav.pug
+        div.container
+            article
+                header 
+                    h1 Game Catalog
+                    p Browse through the list of games currently stored in our online catalog.  See a game you want to trade for?  Highlight the game and select "Trade".
+                section
+                    div(style='display:none')
+                        a(href='#modal_signup' class='inline' id='pop-message') Get Started
+                        div#modal_signup
+                            p Trade has been saved.
+                section
+                    div#error-message
+                        p#message-text
+                    ul#games-list
+                    
+    script(type='text/javascript' src='/public/js/modaal.min.js')
+    script(type='text/javascript' src='/public/js/catalog.js')

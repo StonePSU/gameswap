@@ -1,0 +1,20 @@
+doctype html
+html
+    include head.pug
+    body
+        div.container
+            div.row
+                article
+                    header
+                        h1 Sign In
+                    section
+                        form(action='/login' method='POST')
+                            div.form-group
+                                label(for='username') *Email Address
+                                input.form-control(type='text' data-validation='email' data-validation-error-msg='Please enter a valid email address' placeholder='enter your email address' name='username')
+                            div.form-group
+                                label(for='password') *Password
+                                input.form-control(type='password' name='password' data-validation='required' data-validation-error-msg='Please enter a password for your account.')
+                            button.btn.btn-success(type='submit' id='login') Sign In
+    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js')
+    script(type='text/javascript' src='/controller/accountValidation.js')

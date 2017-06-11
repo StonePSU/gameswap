@@ -1,0 +1,56 @@
+doctype html
+html
+    include head.pug
+    body
+        div.container-fluid.home-page
+            article.big-margin-tb
+                header
+                    h1.text-center GameSwap
+                    p.text-center Why pay $60 or more to buy games or $3/day to rent them when you can borrow them from your neighbors for free?
+                section
+                    div.text-center
+                        a.btn.btn-success(href='#modal_signup' class='inline' id='get-started') Get Started
+                        div#modal_signup
+                            article.col-lg-6
+                                header
+                                    h1 Sign In
+                                section
+                                    form(action='/login' method='POST')
+                                        div.form-group
+                                            label(for='username') *Email Address
+                                            input.form-control(type='text' data-validation='email' data-validation-error-msg='Please enter a valid email address' placeholder='enter your email address' name='username')
+                                        div.form-group
+                                            label(for='password') *Password
+                                            input.form-control(type='password' name='password' data-validation='required' data-validation-error-msg='Please enter a password for your account.')
+                                        button.btn.btn-success(type='submit' id='login') Sign In
+                            article.col-lg-6
+                                header  
+                                    h1 Register
+                                section
+                                    p Don't have a user id?  Get started now!
+                                    a.btn.btn-success(href='/create-account') Register
+        div.container
+            article.row
+                section.col-lg-4.text-center
+                    header
+                        
+                        h1
+                            i.fa.fa-search(aria-hidden='true')
+                            |&nbsp;Browse
+                        p Browse through games owned by other community members to find that game you've been waiting to play.
+                section.col-lg-4.text-center
+                    header
+                        h1 
+                            i.fa.fa-plus-square-o
+                            |&nbsp;Add
+                        p The power of our site comes from our community members and their willingness to trade their games.  So let us know what games you're willing to trade to other members.
+                section.col-lg-4.text-center
+                    header
+                        h1 
+                            i.fa.fa-refresh
+                            |&nbsp;Trade
+                        p Trade for games you want to play and trade your games to other community members.
+    script(type='text/javascript' src='/public/js/modaal.min.js')
+    script(type='text/javascript' src='/public/js/modalPopup.js')
+    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js')
+    script(type='text/javascript' src='/public/js/accountValidation.js')

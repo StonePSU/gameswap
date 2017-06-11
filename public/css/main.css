@@ -1,0 +1,124 @@
+body {
+    color: #333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+}
+header h1 {
+    font-family: 'Barrio', cursive;
+}
+
+.gameswap-brand {
+    font-family: 'Barrio', cursive;
+}
+
+.gameswap-navbar {
+    color: #fff;
+    background-color: #333;
+}
+
+.gameswap-navbar a {
+    color: #fff;
+}
+
+.gameswap-navbar .icon-bar {
+    color: #fff;
+}
+
+.home-page h1 {
+    color: #fff;
+    font-size: 5em;
+}
+
+.home-page p {
+    color: #fff;
+    font-size: 1.75em;
+}
+
+.home-page a {
+    font-size: 1.75em;
+    margin-top: 1em;
+}
+
+.big-margin-tb {
+    margin-bottom: 10vh;
+    margin-top: 10vh;
+}
+
+.home-page {
+    background: linear-gradient(#3b3b3b, white);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.game-card {
+  box-sizing: border-box;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  width: 155px;
+}
+
+.game-card-overlay {
+  display: none;
+  background: linear-gradient(green, #fff);
+  box-sizing: border-box;
+  color: #fff;
+  font-weight: bold;
+  height: 100%;  
+  padding-top: 40%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.game-id {
+  display: none;
+}
+
+.game-card-caption {
+  font-size: 1em;
+  height: 100px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.game-cover:hover .game-card-overlay {
+  display: block;
+  cursor: pointer;
+}
+
+.col-lg-4 p {
+    font-size: 1.375em;
+}
+
+#modal_signup {
+    display:none;
+}
+
+#login {
+    margin-bottom: 30px;
+}
+
+#games-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 20px auto;
+    width: 100%;
+}
+
+#games-list li {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#error-message {
+    display: none;
+}
+
+#message-text {
+    color: red;
+    font-weight: bold;
+}

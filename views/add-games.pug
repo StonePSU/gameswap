@@ -1,0 +1,28 @@
+doctype html
+html
+    include head.pug
+    body
+        include nav.pug
+        div.container
+            article
+                header 
+                    h1 Add Games
+                    p Use the search below to search an online database of millions of games.  Select the ones that you own and want to trade to your games list.
+                    br
+                section
+                    div(style='display:none')
+                        a(href='#modal_signup' class='inline' id='pop-message') Get Started
+                        div#modal_signup
+                            p Game has been added
+                    form.form-inline
+                        div.form-group
+                            label(for='gameTitle') Game Title&nbsp;
+                            input.form-control(type='text' placeholder='Enter video game title' name='gameTitle' id='gameTitle')
+                            button.btn.btn-success(type='button') Search
+                section
+                    div#error-message
+                        p#message-text
+                    ul#games-list
+    script(type='text/javascript' src='/public/js/modaal.min.js')
+    script(type='text/javascript' src='/public/js/addGame.js')                    
+                        

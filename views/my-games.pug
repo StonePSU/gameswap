@@ -1,0 +1,19 @@
+doctype html
+html
+    include head.pug
+    body
+        include nav.pug
+        div.container
+            article
+                header 
+                    h1 My Games
+                    div.pull-right
+                        a.btn.btn-success(href="/add-games") Add New Games
+                    p These are the games you've indicated you are willing to trade.
+                    
+                section
+                    div#error-message
+                        p#message-text
+                    ul#games-list
+                    
+    script(type='text/javascript' src='/public/js/myGames.js')

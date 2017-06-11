@@ -1,0 +1,21 @@
+doctype html
+html
+    include head.pug
+    body
+        include nav.pug
+        div.container
+            article
+                header 
+                    h1 My Trades
+                    p Below is the list of all trades that you have initiated.
+                    
+                section
+                    div#error-message
+                        p#message-text
+                    ul#games-list
+            article
+                header  
+                    h1 Incoming Trades
+                    p These are the incoming requests made to trade for your games.
+                    
+    script(type='text/javascript' src='/public/js/myGames.js')

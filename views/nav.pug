@@ -1,0 +1,22 @@
+nav(class='navbar gameswap-navbar')
+    div.container-fluid
+        div.navbar-header
+            button(type='button' class='navbar-toggle' data-toggle='collapse' data-target='#myNavbar')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a(class='navbar-brand gameswap-brand' href='#') GameSwap
+        div(class='collapse navbar-collapse' id='myNavbar')
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(href='/game-catalog') Catalog
+                li
+                    a(href='/my-games') My Games
+                li
+                    a(href='/trades') Trades
+                li
+                    a(href='/logout')
+                        i(class='fa fa-sign-out' aria-hidden='true' aria-label='Sign Out' alt='Sign Out')
+                li 
+                    a(href='/user')
+                        i(class='fa fa-cogs' aria-hidden='true' aria-label='Settings')
