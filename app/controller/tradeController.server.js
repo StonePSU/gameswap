@@ -125,6 +125,26 @@ module.exports = {
                         /* need to reject all other trades */
                         Trade.update({gameId: gameId, tradeStatus: "Pending", gameOwner: gameOwner}, {$set: {tradeStatus: "Rejected"}}).exec(function(err, results) {
                             res.json({status: "Success", message: "Trade has been approved", results}) ;
+                            
+                            /* need to remove the game owner.  If this was the only owner of the game then delete the game completely */
+                            Game.findOne({gameId: gameId}).exec(function(err, game) {
+                                if (err) throw err;
+                                
+                                if (game) {
+                                    var owners = game.owners;
+                                    if (owners.length === 1) {
+                                        game.remove();
+                                        game.save(function(err, result) {
+                                          if (err) throw err;  
+                                        })
+                                    } else {
+                                        game.owners.remove({username: gameOwner});
+                                        game.save(function(err, result) {
+                                            if (err) throw err;
+                                        })
+                                    }
+                                }
+                            })
                         });
                     }) 
                     
