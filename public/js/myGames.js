@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function() {
     $.get(window.location.origin + "/api/games/user/", function(data) {
         console.log(data);

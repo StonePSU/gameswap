@@ -8,16 +8,26 @@ function routes(app, passport) {
     /* Routes */
     app.get("/", function(req, res) {
        //res.send("<h1>GameSwap</h1>");
-       res.render('index');
+       if (req.isAuthenticated()) {
+           res.render("game-catalog");
+       } else {
+        res.render('index');
+       }
     });
     
+    /***********************************************
+     *             User API Calls                 *
+     ***********************************************/
     app.route("/api/user")
         .post(userController.createUser)
         .patch(userController.updateUser);
         
     app.route("/api/user/:id")
         .get(userController.getUserDetails);
-        
+    
+    /***********************************************
+     *             Game API Calls                 *
+     ***********************************************/    
     app.route("/api/games/user/")
         .get(gameController.getGamesForUser)
         
@@ -28,6 +38,9 @@ function routes(app, passport) {
         .post(gameController.addGame)
         .get(gameController.getGames);
         
+    /***********************************************
+     *             Trade API Calls                 *
+     ***********************************************/
     app.route("/api/trades/requestor")
         .get(tradeController.getTradesByRequestor);
         
@@ -36,7 +49,16 @@ function routes(app, passport) {
         
     app.route("/api/trades")
         .post(tradeController.requestNewTrade);
+        
+        
+    app.route("/api/trades/:tradeId")
+        .delete(tradeController.deleteTrade)
+        .put(tradeController.rejectTrade)
+        .patch(tradeController.approveTrade)
     
+    /***********************************************
+     *             User Inteface Calls             *
+     ***********************************************/
     app.route("/login")
         .post(passport.authenticate('local', {successRedirect: "/game-catalog", failureRedirect: "/login"}))
         .get(function(req, res) {

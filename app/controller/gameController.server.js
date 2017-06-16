@@ -94,40 +94,31 @@ module.exports = {
     },
     
     getGames: function getGames(req, res) {
-        if (req.isAuthenticated()) {
-            Game.find({}, {_id: false})
-                .select('gameId title imageUrl')
-                .exec(function(err, games) {
-                    if (err) throw err;
+        Game.find({'owners.username' : {$ne: req.user.username}}, {_id: false})
+            .select('gameId title imageUrl')
+            .exec(function(err, games) {
+                if (err) throw err;
 
-                    if (!games || games.length===0) {
-                        res.json(noResults);
-                    } else {
-                        res.json({status: "Success", message: "Game returned", games})
-                    }
-                })
-        } else {
-            res.json(notAuthenticated);
-        }
+                if (!games || games.length===0) {
+                    res.json(noResults);
+                } else {
+                    res.json({status: "Success", message: "Game returned", games})
+                }
+            })
     },
     
     getGamesForUser: function getGamesForUser(req,res) {
-        
-        if (req.isAuthenticated()) {
-            Game.find({"owners.username": req.user.username})
-                .select("gameId title imageUrl")
-                .exec(function(err, games) {
-                    if (err) throw err;
-                    
-                    if (!games || games.length ===0) {
-                        res.json(noResults);
-                    } else {
-                        res.json({status: "Success", message: "Games Found", games});
-                    }
-                })
-        } else {
-            res.json(notAuthenticated);
-        }
+        Game.find({"owners.username": req.user.username})
+            .select("gameId title imageUrl")
+            .exec(function(err, games) {
+                if (err) throw err;
+                
+                if (!games || games.length ===0) {
+                    res.json(noResults);
+                } else {
+                    res.json({status: "Success", message: "Games Found", games});
+                }
+        })
         
     }
 }

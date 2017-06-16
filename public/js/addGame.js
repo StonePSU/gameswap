@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function() {
     
     $("button").click(function() {
@@ -22,7 +24,25 @@ $(document).ready(function() {
                     } else {
                         coverImage = "/public/img/image-not-available.jpg";
                     }
-                    let html = "<li id='game'>"
+                                
+                    let html = "<li class='game' data-gameswapId='" + value.id + "' data-gameswapTitle='" + value.name + "' data-gameswap-imageurl='" + coverImage + "'>";
+                    html += "<div class='game-card'>";
+                    html += "<div class='game-front'>";
+                    html +="<img width='99%' height='150px' class='img-responsive' src='" + coverImage + "'>";
+                    html += "<div class='game-card-caption'>";
+                    html += "<span class='game-id'>" + value.id + "</span>";
+                    html += "<span class='game-name'>" + value.name + "</span>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "<div class='game-back'>";
+                    //html += "<a href='#' class='game-cover'>";
+                    html += "<div class='game-card-overlay'>Add<br />" + value.name + "<br />to My Games</div>";
+                    // html += "</a>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</li>";
+                    
+                    /*let html = "<li id='game'>"
                     html += "<div class='game-card'>";
                     html += "<a href='#' class='game-cover'><img width='100%' height='150px' class='img-responsive' src='" + coverImage + "'>";
                     html += "<div class='game-card-overlay'>Add<br />" + value.name + "</div></a>";
@@ -30,7 +50,7 @@ $(document).ready(function() {
                     html += "<span class='game-id'>" + value.id + "</span>";
                     html += "<span class='game-name'>" + value.name + "</span>";
                     html += "</div></div>"
-                    html += "</li>"
+                    html += "</li>"*/
                     $('#games-list').append(html);
                 });
             } else {
@@ -38,12 +58,13 @@ $(document).ready(function() {
                 $('#message-text').text(data.message);
             }
             
-            $(".game-cover").click(function() {
-                var caption = $(this).siblings(".game-card-caption");
-                var imageUrl = $(this).children("img").attr("src");
-                var igdbId = caption.children(".game-id").text()
-                var name = caption.children(".game-name").text();
-                var summary = caption.children(".game-summary").text();
+            $(".game-back").click(function() {
+                
+                var gp = $(this).parent().parent();
+                var imageUrl = gp.data("gameswapImageurl");
+                var igdbId = gp.data("gameswapid")
+                var name = gp.data("gameswaptitle")
+                var summary = '';
                 
                 $.post(window.location.origin + "/api/games", {
                     name: name,

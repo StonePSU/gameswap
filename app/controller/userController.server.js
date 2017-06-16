@@ -28,7 +28,8 @@ module.exports = {
                            
                            if (results) {
                                 console.log("createUser: function createUser was successful");
-                                res.json({status: "Success", message: "User Saved!", results})    
+                                res.redirect("/");
+                                //res.json({status: "Success", message: "User Saved!", results})    
                            }
                        })
                    } else {
@@ -40,48 +41,44 @@ module.exports = {
     
     updateUser: function updateUser(req, res) {
         console.log("update user");
-        if (req.isAuthenticated()) {
-            User.findOne({username: req.user.username}, function(err, user) {
-                if (err) throw err;
-                
-                if (!user) {
-                    res.json({status: "Error", message: "User not found"});
-                } else {
+        User.findOne({username: req.user.username}, function(err, user) {
+            if (err) throw err;
+            
+            if (!user) {
+                res.json({status: "Error", message: "User not found"});
+            } else {
 
-                    if (req.body.password) {
-                        user.password = req.body.password;    
-                    }
-                    if (req.body.firstName) {
-                        user.name.firstName = req.body.firstName;   
-                    }
-                    
-                    if (req.body.lastName) {
-                        user.name.lastName = req.body.lastName;
-                    }
-                    
-                    if (req.body.firstName || req.body.lastName) {
-                        user.name.fullName = req.body.firstName + " " + req.body.lastName;
-                    }
-                    
-                    if (req.body.city) {
-                        user.city = req.body.city;
-                    }
-                    
-                    if (req.body.state) {
-                        user.state = req.body.state;
-                    }
-                    user.save(function(err, results) {
-                        if (err) throw err;
-                        
-                        if (results) {
-                            res.json({status: "Success", message: "User Saved"});
-                        }
-                    })
+                if (req.body.password) {
+                    user.password = req.body.password;    
                 }
-            })
-        } else {
-            res.json(notAuthenticated);
-        }
+                if (req.body.firstName) {
+                    user.name.firstName = req.body.firstName;   
+                }
+                
+                if (req.body.lastName) {
+                    user.name.lastName = req.body.lastName;
+                }
+                
+                if (req.body.firstName || req.body.lastName) {
+                    user.name.fullName = req.body.firstName + " " + req.body.lastName;
+                }
+                
+                if (req.body.city) {
+                    user.city = req.body.city;
+                }
+                
+                if (req.body.state) {
+                    user.state = req.body.state;
+                }
+                user.save(function(err, results) {
+                    if (err) throw err;
+                    
+                    if (results) {
+                        res.json({status: "Success", message: "User Saved"});
+                    }
+                })
+            }
+        })
     },
     
     getUserDetails: function getUserDetails(req, res) {

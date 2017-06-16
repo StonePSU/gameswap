@@ -7,7 +7,7 @@ var Trade = new Schema({
     tradeId: String,
     requestor: String,
     dateRequested: Date,
-    gameid: String,
+    gameId: String,
     title: String,
     tradeStatus: String,
     gameOwner: String

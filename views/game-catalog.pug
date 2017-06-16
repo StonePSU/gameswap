@@ -8,10 +8,15 @@ html
                 header 
                     h1 Game Catalog
                     p Browse through the list of games currently stored in our online catalog.  See a game you want to trade for?  Highlight the game and select "Trade".
+                    p Note that games that are in your own catalog have been omitted from this list.
                 section
                     div(style='display:none')
                         a(href='#modal_signup' class='inline' id='pop-message') Get Started
                         div#modal_signup
+                            p Trade has been saved.
+                    div(style='display:none')
+                        a(href='#error' class='inline' id='error-message') Get Started
+                        div#error
                             p Trade has been saved.
                 section
                     div#error-message

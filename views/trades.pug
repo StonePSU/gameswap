@@ -4,18 +4,25 @@ html
     body
         include nav.pug
         div.container
-            article
-                header 
-                    h1 My Trades
-                    p Below is the list of all trades that you have initiated.
+            div.row
+                div.col-md-6
+                    article
+                        header 
+                            h1 My Trade Requests
+                            p Below is the list of all trades that you have initiated.  If you wish to delete a trade you may do so while it remains in "Pending" status.
+                            
+                        section
+                            div#error-message
+                                p#message-text
+                            ul#my-trade-list.trades
+                div.col-md-6
+                    article
+                        header  
+                            h1 Incoming Trade Requests
+                            p These are the incoming requests made to trade for your games.  You can choose to either Approve or Reject these trades.
+                        section
+                            div#error-message2
+                                p#message-text2
+                            ul#incoming-trade-list.trades
                     
-                section
-                    div#error-message
-                        p#message-text
-                    ul#games-list
-            article
-                header  
-                    h1 Incoming Trades
-                    p These are the incoming requests made to trade for your games.
-                    
-    script(type='text/javascript' src='/public/js/myGames.js')
+    script(type='text/javascript' src='/public/js/tradeList.js')

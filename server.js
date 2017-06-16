@@ -3,7 +3,8 @@ const express = require('express')
     , session = require('express-session')
     , passport = require('passport')
     , bodyParser = require('body-parser')
-    , routes = require('./app/routes/routes.js');
+    , routes = require('./app/routes/routes.js')
+    , middleware = require('./app/middleware/apiAuthentication.js');
 require('dotenv').config();
 require(process.cwd() + "/app/sec/passport.js")(passport);
 
@@ -27,6 +28,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({type: "application/json"}));
+app.use("/api/*", middleware.api);
 
 /* Routes */
 routes(app, passport);
