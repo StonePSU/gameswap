@@ -33,6 +33,6 @@ app.use("/api/*", middleware.api);
 /* Routes */
 routes(app, passport);
 
-app.listen(8080 || process.env.PORT, function() {
+app.listen(process.env.PORT || 8080, function() {
    console.log("INFO: server has been initialized"); 
 });
