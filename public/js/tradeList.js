@@ -2,19 +2,6 @@
 
 var apiBaseURL = "/api/trades/";
 
-function getDate(strDateIn) {
-    var dateOut;
-    var str = strDateIn.substring(0, 10);
-
-    var arrStr = str.split("-");
-    return arrStr[1] + "/" + arrStr[2] + "/" + arrStr[0];
-}
-
-function escapeString(string) {
-    var string2 = string.replace("'", "\\'");
-    return string2;
-}
-
 $(document).ready(function() {
     /* load the My Trades section */
     $.get(apiBaseURL + "requestor", function(results) {

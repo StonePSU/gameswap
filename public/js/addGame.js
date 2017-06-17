@@ -13,45 +13,14 @@ $(document).ready(function() {
             return;
         }
         $.get(window.location.origin + "/api/games/" + $("#gameTitle").val(), function(data) {
-            console.log(data.games);
-            
             if (data.status === "Success") {
-                
                 $.each(data.games, function(index, value) {
-                    var coverImage = "";
+                    var coverImage = null;
                     if (value.cover) {
                         coverImage = value.cover.url;
-                    } else {
-                        coverImage = "/public/img/image-not-available.jpg";
                     }
-                                
-                    let html = "<li class='game' data-gameswapId='" + value.id + "' data-gameswapTitle='" + value.name + "' data-gameswap-imageurl='" + coverImage + "'>";
-                    html += "<div class='game-card'>";
-                    html += "<div class='game-front'>";
-                    html +="<img width='99%' height='150px' class='img-responsive' src='" + coverImage + "'>";
-                    html += "<div class='game-card-caption'>";
-                    html += "<span class='game-id'>" + value.id + "</span>";
-                    html += "<span class='game-name'>" + value.name + "</span>";
-                    html += "</div>";
-                    html += "</div>";
-                    html += "<div class='game-back'>";
-                    //html += "<a href='#' class='game-cover'>";
-                    html += "<div class='game-card-overlay'>Add<br />" + value.name + "<br />to My Games</div>";
-                    // html += "</a>";
-                    html += "</div>";
-                    html += "</div>";
-                    html += "</li>";
-                    
-                    /*let html = "<li id='game'>"
-                    html += "<div class='game-card'>";
-                    html += "<a href='#' class='game-cover'><img width='100%' height='150px' class='img-responsive' src='" + coverImage + "'>";
-                    html += "<div class='game-card-overlay'>Add<br />" + value.name + "</div></a>";
-                    html += "<div class='game-card-caption'>";
-                    html += "<span class='game-id'>" + value.id + "</span>";
-                    html += "<span class='game-name'>" + value.name + "</span>";
-                    html += "</div></div>"
-                    html += "</li>"*/
-                    $('#games-list').append(html);
+                    var card = new GameCard(value.id, value.name, coverImage, "Add<br />" )
+                    $("#games-list").append(card.buildCardHtml());
                 });
             } else {
                 $('#error-message').css('display', 'block');

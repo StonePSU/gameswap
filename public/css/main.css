@@ -18,7 +18,7 @@ ul {
 
 .gameswap-navbar {
     color: #fff;
-    background-color: #333;
+    background-color: #f96332;
 }
 
 .gameswap-navbar a {
@@ -37,6 +37,8 @@ ul {
 .home-page p {
     color: #fff;
     font-size: 1.75em;
+    width: 60%;
+    margin: auto;
 }
 
 .home-page a {
@@ -50,12 +52,13 @@ ul {
 }
 
 .home-page {
-    background: linear-gradient(#3b3b3b, white);
+    background-image: url('/public/img/bg-photo.gif');
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
 }
-.game {
-  perspective: 1000px;
+.game, .game-no-overlay {
 }
 .game-card {
     border: 1px solid #e0e0e0;
@@ -70,7 +73,7 @@ ul {
     transform: rotateY(180deg);
 }
 
-.game, .game-card, .game-front, .game-back {
+.game, .game-card, .game-front, .game-back, .game-no-overlay {
   width: 155px;
   height: 250px;
 }
@@ -88,7 +91,7 @@ ul {
 }
 
 .game-back {
-  background: linear-gradient(rgb(92, 184, 92), white);
+  background: #f96332;
   color: #fff;
   cursor: pointer;
   font-weight: bold;
@@ -156,35 +159,22 @@ ul {
 .trades li {
     padding: 15px;
     border-radius: 5px;
+    border: 1px solid #f96332;
     margin: 10px 0px;
     position: relative;
 }
 
 .trades li:nth-child(odd) {
-    /*background: linear-gradient(rgb(92, 184, 92), white); */
-    background: rgb(92, 184, 92);
-    border: 1px solid rgb(92, 184, 92);
+    background: #f96332;
     color: white;
 }
 
 .trades li:nth-child(even) {
     background: white;
-    border: 1px solid rgb(92, 184, 92);
-    color: rgb(92, 184, 92);
+    color: #f96332;
 }
-
-/*
-.trades li:nth-child(even) .trade-buttons i {
-    color: rgb(92, 184, 92);
-}
-
-.trades li:nth-child(odd) .trade-buttons i {
-    color: white;
-}*/
-
 
 .trade-buttons {
-    /*float: right;*/
     color: inherit;
     position: absolute;
     top: 40%;
@@ -198,11 +188,6 @@ ul {
     transition: 0.5s;    
 }
 
-/*
-.delete-trade, .reject-btn {
-    color: red;
-}
-*/
 .delete-trade:hover, .reject-btn:hover, .approve-btn:hover {
     transform: scale(1.5);
 }

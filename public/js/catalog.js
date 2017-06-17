@@ -1,11 +1,5 @@
 'use strict';
 
-function escapeString(string) {
-    var string2 = string.replace("'", "\\'");
-    return string2;
-}
-
-
 $(document).ready(function() {
     $.get(window.location.origin + "/api/games", function(data) {
         console.log(data);
@@ -13,25 +7,8 @@ $(document).ready(function() {
         if (data.status === "Success") {
             
             $.each(data.games, function(index, value) {
-                var coverImage = "";
-                let html = '<li class="game" data-gameswapId="' + value.gameId + '" data-gameswapTitle="' + escapeString(value.title) + '">';
-                html += "<div class='game-card'>";
-                html += "<div class='game-front'>";
-                html +="<img width='99%' height='150px' class='img-responsive' src='" + value.imageUrl + "'>";
-                html += "<div class='game-card-caption'>";
-                html += "<span class='game-id'>" + value.gameId + "</span>";
-                html += "<span class='game-name'>" + value.title + "</span>";
-                html += "</div>";
-                html += "</div>";
-                html += "<div class='game-back'>";
-                //html += "<a href='#' class='game-cover'>";
-                html += "<div class='game-card-overlay'>Request<br />Trade for<br />" + value.title + "</div>";
-                // html += "</a>";
-                html += "</div>";
-                html += "</div>";
-                html += "</li>";
-
-                $('#games-list').append(html);
+                var card = new GameCard(value.gameId, value.title, value.imageUrl, "Request<br />Trade for<br />" );
+                $('#games-list').append(card.buildCardHtml());
                 
             });
         } else {
