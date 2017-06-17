@@ -46,6 +46,11 @@ ul {
     margin-top: 1em;
 }
 
+.lg-margin {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .big-margin-tb {
     margin-bottom: 10vh;
     margin-top: 10vh;
@@ -190,4 +195,19 @@ ul {
 
 .delete-trade:hover, .reject-btn:hover, .approve-btn:hover {
     transform: scale(1.5);
+}
+
+#footer {
+    background-color: #3d3d3d;
+    color: #fff;
+    padding: 20px 0px;
+}
+
+#social-btns i {
+    padding: 0px 50px;
+}
+
+#social-btns a {
+    color: #fff;
+    outline: none;
 }

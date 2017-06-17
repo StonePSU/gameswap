@@ -29,7 +29,7 @@ html
                                 section
                                     p Don't have a user id?  Get started now!
                                     a.btn.btn-success(href='/create-account') Register
-        div.container
+        div.container.lg-margin
             article.row
                 section.col-lg-4.text-center
                     header
@@ -50,8 +50,7 @@ html
                             i.fa.fa-refresh
                             |&nbsp;Trade
                         p Trade for games you want to play and trade your games to other community members.
-        div.container#footer
-            |&nbsp;
+        include footer.pug
     script(type='text/javascript' src='/public/js/modaal.min.js')
     script(type='text/javascript' src='/public/js/modalPopup.js')
     script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js')
